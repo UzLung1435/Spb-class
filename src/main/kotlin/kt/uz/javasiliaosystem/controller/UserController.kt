@@ -4,9 +4,7 @@ import kt.uz.javasiliaosystem.entity.UserEntity
 import kt.uz.javasiliaosystem.service.IUserService
 import kt.uz.javasiliaosystem.service.impl.UserService
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.ResponseBody
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import javax.annotation.Resource
 import javax.servlet.http.HttpServletRequest
 
@@ -21,6 +19,11 @@ class UserController {
     @ResponseBody
     fun getAll(req:HttpServletRequest): UserEntity{
         return userService.getAll()
+    }
+    @GetMapping("/getUserById")
+    @ResponseBody
+    fun getUserById(@RequestParam("uid") uid: Int): String? {
+        return userService.getUserById(uid)
     }
 
 }

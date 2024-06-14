@@ -24,15 +24,15 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation('org.springframework.boot:spring-boot-starter-web') {
+        exclude module: 'spring-boot-starter-json'
+    }
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
     implementation 'org.jetbrains.kotlin:kotlin-reflect'
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
-
-    //implementation 'com.baomidou:mybatis-plus-boot-starter:3.5.7'
-    //implementation 'com.baomidou:mybatis-plus-generator:3.5.7'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'com.google.code.gson:gson:2.10.1'
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
     testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:2.2.2'
 

@@ -6,7 +6,13 @@
     <select id="getAll" resultType="kt.uz.javasiliaosystem.entity.UserEntity">
         select * from user
     </select>
+
+    <select id="getUserById" resultType="kt.uz.javasiliaosystem.entity.UserEntity">
+        select * from user where user_id = #{userId}
+    </select>
+
     <resultMap id="UserEntityResultMap" type="kt.uz.javasiliaosystem.entity.UserEntity">
-        <result column="userName" property="userName" jdbcType="VARCHAR"/>
+        <id column="user_id" property="userId" />
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
     </resultMap>
 </mapper>
