@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kt.uz.javasiliaosystem.mapper.RegularFodderMapper">
+    <select id="getRegularByName" resultType="kt.uz.javasiliaosystem.entity.RegularFodderEntity">
+        select * from 饲料描述及常规成分 where 饲料名称 like #{fodderName}
+    </select>
+
+    <select id="getRegularById" resultType="kt.uz.javasiliaosystem.entity.RegularFodderEntity">
+        select * from 饲料描述及常规成分 where 中国饲料号CFN = #{CFN}
+    </select>
+
+    <select id="getRegularByAttribute" resultType="kt.uz.javasiliaosystem.entity.RegularFodderEntity">
+        SELECT * from 饲料描述及常规成分
+        WHERE #{fodderName} = ? AND #{raNum} IS NOT NULL;
+    </select>
+
+    <resultMap id="RegularFodderEntityResultMap" type="kt.uz.javasiliaosystem.entity.RegularFodderEntity">
+        <id column="序号" property="xid" jdbcType="VARCHAR"/>
+        <id column="中国饲料号CFN" property="CFN" jdbcType="VARCHAR"/>
+        <id column="饲料名称" property="fodderName" jdbcType="VARCHAR"/>
+        <id column="饲料描述" property="fodderDescription" jdbcType="VARCHAR"/>
+        <id column="干物质" property="dryMatter" jdbcType="DOUBLE"/>
+        <id column="粗蛋白质" property="crudeProtein" jdbcType="DOUBLE"/>
+        <id column="粗脂肪" property="crudeFat" jdbcType="DOUBLE"/>
+        <id column="粗纤维" property="crudeFiber" jdbcType="DOUBLE"/>
+        <id column="无氮浸出物" property="nitrogenFreeExtract" jdbcType="DOUBLE"/>
+        <id column="粗灰分" property="crudeAsh" jdbcType="DOUBLE"/>
+        <id column="中洗纤维" property="neutralDetergentFiber" jdbcType="DOUBLE"/>
+        <id column="酸洗纤维" property="acidDetergentFiber" jdbcType="DOUBLE"/>
+        <id column="淀粉" property="starch" jdbcType="DOUBLE"/>
+        <id column="钙" property="calcium" jdbcType="DOUBLE"/>
+        <id column="总磷" property="totalPhosphorus" jdbcType="DOUBLE"/>
+        <id column="有效磷" property="availablePhosphorus" jdbcType="DOUBLE"/>
+
+    </resultMap>
+</mapper>
