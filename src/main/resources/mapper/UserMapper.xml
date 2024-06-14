@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kt.uz.javasiliaosystem.mapper.UserMapper">
+    <select id="getAll" resultType="kt.uz.javasiliaosystem.entity.UserEntity">
+        select * from user
+    </select>
+    <resultMap id="UserEntityResultMap" type="kt.uz.javasiliaosystem.entity.UserEntity">
+        <result column="userName" property="userName" jdbcType="VARCHAR"/>
+    </resultMap>
+</mapper>
