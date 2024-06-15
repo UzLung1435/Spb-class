@@ -17,11 +17,17 @@ class RegularFodderController {
 
     val logger = LoggerFactory.getLogger(this.javaClass)
 
-    @RequestMapping("/getRegularByName")
+    @RequestMapping("/getByName")
     @ResponseBody
     fun getRegularByName(@RequestParam("name") name:String): List<RegularFodderEntity> {
         logger.info("Input: $name")
         logger.info("查询词： %$name%")
         return regularFodderService.getRegularByName("%$name%")
+    }
+
+    @RequestMapping("/getAllFodders")
+    @ResponseBody
+    fun getAllFodders():List<RegularFodderEntity>{
+        return regularFodderService.getAll()
     }
 }

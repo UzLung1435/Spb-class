@@ -12,6 +12,10 @@ open class RegularFodderService:IRegularFodderService {
     @Resource
     lateinit var regularFodderMapper: RegularFodderMapper
 
+    override fun getAll():List<RegularFodderEntity>{
+        return regularFodderMapper.getAll()
+    }
+
     override fun getRegularByName(fodderName: String): List<RegularFodderEntity> {
         return regularFodderMapper.getRegularByName(fodderName)
     }

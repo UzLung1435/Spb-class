@@ -3,6 +3,10 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kt.uz.javasiliaosystem.mapper.RegularFodderMapper">
+    <select id="getAll" resultType="kt.uz.javasiliaosystem.entity.RegularFodderEntity">
+        select * from 饲料描述及常规成分
+    </select>
+
     <select id="getRegularByName" resultType="kt.uz.javasiliaosystem.entity.RegularFodderEntity">
         select * from 饲料描述及常规成分 where 饲料名称 like #{fodderName}
     </select>
