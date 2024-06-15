@@ -12,7 +12,7 @@ open class UserService : IUserService{
     @Resource
     lateinit var userMapper: UserMapper
 
-    override fun getAll(): UserEntity {
+    override fun getAll(): List<UserEntity> {
         return userMapper.getAll()
     }
 

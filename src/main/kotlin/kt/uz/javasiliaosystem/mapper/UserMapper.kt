@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository
 @Mapper
 @Repository
 interface UserMapper {
-    fun getAll(): UserEntity
+    fun getAll(): List<UserEntity>
     fun getUserById(userId: Int): UserEntity
 }
