@@ -11,6 +11,10 @@
         select * from user where user_id = #{userId}
     </select>
 
+    <select id="getUserInfo" resultType="kt.uz.javasiliaosystem.entity.UserEntity">
+        select * from user where user_id = #{userId} and passwd = #{passwd}
+    </select>
+
     <resultMap id="UserEntityResultMap" type="kt.uz.javasiliaosystem.entity.UserEntity">
         <id column="user_id" property="userId" />
         <result column="user_name" property="userName" jdbcType="VARCHAR"/>
