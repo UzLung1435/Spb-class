@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
-    <title>登录首页</title>
+    <title>饲料数据</title>
     <!-- MDB icon -->
     <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon"/>
     <!-- Font Awesome -->
@@ -28,6 +28,42 @@
             display: flex;
             justify-content: center;
         }
+
+        /* 添加到您的CSS文件中 */
+        thead {
+            position: sticky;
+            top: 0; /* 固定在顶部 */
+            z-index: 10; /* 确保表头在内容之上 */
+            
+        }
+
+        thead th {
+            white-space: nowrap; /* 防止文本换行 */
+            overflow: hidden; /* 隐藏超出部分 */
+            text-overflow: ellipsis; /* 显示省略号 */
+            max-width: 3%; /* 设置最大宽度（根据需要调整） */
+        }
+        /* 添加到您的CSS文件中 */
+        #navbar {
+            position: sticky;
+            top: 0; /* 固定在顶部 */
+            z-index: 1; /* 确保navbar在内容之上 */
+        }
+                /* 添加到您的CSS文件中 */
+        .table-container {
+            max-width: 70%; /* 设置最大宽度 */
+            max-height: 500px;
+            overflow-x: auto; /* 当内容超出时显示滚动条 */
+            overflow-y: auto; /* 当内容超出时显示滚动条 */
+            margin-top: 5%;
+        }
+
+        .table-container table {
+            width: 100%; /* 表格宽度默认为父容器的100% */
+            border-collapse: collapse; /*collapse边框*/
+        }
+
+
     </style>
 
 </head>
@@ -41,7 +77,7 @@
         <div class="container">
             <!-- Navbar brand -->
             <a class="navbar-brand me-2">
-                <img src="./img/stacks_24dp_FILL0_wght400_GRAD0_opsz24.svg" height="16" alt="Stack Logo" loading="lazy"
+                <img src="./img/stacks_24dp_FILL0_wght400_GRAD0_opsz24.svg" height="20" alt="Stack Logo" loading="lazy"
                      style="margin-top: -1px;"/>
             </a>
 
@@ -81,36 +117,49 @@
 </header>
 
 <body>
-
-<div style="">
-    <div style="width: 60%; height: 40%;">
-        <table class="table">
-            <thead class="thead-dark">
-            <tr>
-                <th scope="col">序号</th>
-                <th scope="col">中国饲料号CFN</th>
-                <th scope="col">饲料名称</th>
-                <th scope="col">饲料描述</th>
-                <th scope="col">干物质(%)</th>
-                <th scope="col">粗蛋白质(%)</th>
-                <th scope="col">粗脂肪(%)</th>
-                <th scope="col">粗纤维(%)</th>
-                <th scope="col">无氮浸出物(%)</th>
-                <th scope="col">粗灰分(%)</th>
-                <th scope="col">中洗纤维(%)</th>
-                <th scope="col">酸洗纤维(%)</th>
-                <th scope="col">淀粉(%)</th>
-                <th scope="col">钙(%)</th>
-                <th scope="col">总磷(%)</th>
-                <th scope="col">有效磷(%)</th>
-            </tr>
+    <div class="container">
+        <div class="collapse">
+            <!-- Left links -->
+            <ul class="me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="#饲料基础数据">饲料基础数据</a>
+                </li>
+            </ul>
+            <div class="d-flex align-items-center">
+                <button data-mdb-ripple-init type="button" id="toggleTableButton" class="btn btn-link px-3 me-2">
+                  显示数据
+                </button>
+              </div>
+        </div>
+    </div>
+    <div class="container table-container">
+        <table class="striped highlight responsive-table table">
+            <thead>
+                <tr>
+                    <th scope="col">序号</th>
+                    <th scope="col">中国饲料号CFN</th>
+                    <th scope="col">饲料名称</th>
+                    <th scope="col">饲料描述</th>
+                    <th scope="col">干物质(%)</th>
+                    <th scope="col">粗蛋白质(%)</th>
+                    <th scope="col">粗脂肪(%)</th>
+                    <th scope="col">粗纤维(%)</th>
+                    <th scope="col">无氮浸出物(%)</th>
+                    <th scope="col">粗灰分(%)</th>
+                    <th scope="col">中洗纤维(%)</th>
+                    <th scope="col">酸洗纤维(%)</th>
+                    <th scope="col">淀粉(%)</th>
+                    <th scope="col">钙(%)</th>
+                    <th scope="col">总磷(%)</th>
+                    <th scope="col">有效磷(%)</th>
+                </tr>
             </thead>
-            <tbody id="fodder-table-body">
-            <!-- Data will be inserted here -->
+            <tbody id="fodderTableBody">
+                <!-- 数据将被填充在这里 -->
             </tbody>
         </table>
     </div>
-</div>
+
 <!-- Fodder Modal -->
 <!--
 <div class="modal fade" id="fodderModal" tabindex="-1" role="dialog" aria-labelledby="fodderModalLabel"
@@ -165,6 +214,68 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/js/mdb.min.js"></script>
 
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var toggleTableButton = document.getElementById('toggleTableButton');
+    var tableBody = document.getElementById('fodderTableBody');
+    var fodderTableSidenav = document.getElementById('fodderTableSidenav');
+    var fodderTableSidenavInstance = M.Sidenav.init(fodderTableSidenav, {});
+
+    // 初始化按钮文本
+    toggleTableButton.textContent = tableBody.style.display === 'none' ? '显示表格' : '收起表格';
+
+    // 添加按钮点击事件监听器
+    toggleTableButton.addEventListener('click', function() {
+        if (tableBody.style.display === 'none') {
+            tableBody.style.display = 'table-row-group';
+            toggleTableButton.textContent = '收起表格';
+        } else {
+            tableBody.style.display = 'none';
+            toggleTableButton.textContent = '显示表格';
+        }
+    });
+
+    // 数据获取和渲染代码省略
+});
+
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var tableBody = document.getElementById('fodderTableBody');
+
+    fetch('http://localhost:8080/api/fodder/regular/getAllFodders')
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(fodder => {
+                let row = `<tr>
+                            <td>${fodder.xid || '-'}</td>
+                            <td>${fodder.CFN || '-'}</td>
+                            <td>${fodder.fodderName || '-'}</td>
+                            <td>${fodder.fodderDescription || '-'}</td>
+                            <td>${fodder.dryMatter || '-'}</td> 
+                            <td> ${fodder.crudeProtein || '-'}</td> 
+                            <td> ${fodder.crudeFat || '-'}</td> 
+                            <td> ${fodder.crudeFiber || '-'}</td> 
+                            <td> ${fodder.nitrogenFreeExtract || '-'}</td> 
+                            <td> ${fodder.crudeAsh || '-'}</td> 
+                            <td> ${fodder.neutralDetergentFiber || '-'}</td> 
+                            <td> ${fodder.acidDetergentFiber || '-'}</td> 
+                            <td> ${fodder.starch || '-'}</td> 
+                            <td> ${fodder.calcium || '-'}</td> 
+                            <td> ${fodder.totalPhosphorus || '-'}</td> 
+                            <td> ${fodder.availablePhosphorus || '-'}</td> 
+                           </tr>`;
+                tableBody.innerHTML += row;
+            });
+        })
+        .catch(error => {
+            console.error('请求失败:', error);
+        });
+});
+
+
+
+ /*
     $(document).ready(function () {
         // Fetch and display fodder data
         function fetchFodders() {
@@ -317,4 +428,5 @@
             });
         });
     });
+    */
 </script>

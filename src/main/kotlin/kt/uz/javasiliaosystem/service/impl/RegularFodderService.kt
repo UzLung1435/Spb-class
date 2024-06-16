@@ -1,5 +1,6 @@
 package kt.uz.javasiliaosystem.service.impl
 
+import kt.uz.javasiliaosystem.entity.CustomFodderEntity
 import kt.uz.javasiliaosystem.entity.RegularFodderEntity
 import kt.uz.javasiliaosystem.mapper.RegularFodderMapper
 import kt.uz.javasiliaosystem.service.IRegularFodderService
@@ -26,6 +27,10 @@ open class RegularFodderService:IRegularFodderService {
 
     override fun getRegularByAttribute(fodderName: String, raNum: Double): RegularFodderEntity {
         return regularFodderMapper.getRegularByAttribute(fodderName, raNum)
+    }
+
+    override fun addCustomFodder(customFodder: CustomFodderEntity) {
+        return regularFodderMapper.addCustomFodder(customFodder)
     }
 
 }
