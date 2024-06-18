@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Common Header and Nav</title>
+    <!-- Material Design 3 CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <!-- Custom CSS -->
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+</head>
+<style>
+    .mdc-drawer-app-content {
+        flex: auto;
+        overflow: auto;
+        position: relative;
+    }
+    .main-content {
+        overflow: auto;
+        height: 100%;
+    }
+    .app-bar {
+        position: absolute;
+    }
+</style>
+<body>
+<!-- Top App Bar -->
+<header class="mdc-top-app-bar mdc-top-app-bar--fixed">
+    <div class="mdc-top-app-bar__row">
+        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+            <button class="mdc-icon-button material-icons mdc-top-app-bar__navigation-icon" onclick="toggleDrawer()">menu</button>
+            <span class="mdc-top-app-bar__title">饲料管理系统</span>
+        </section>
+        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+            <button class="mdc-icon-button material-icons" onclick="showLogoutOptions()">account_circle</button>
+        </section>
+    </div>
+</header>
+
+<!-- Drawer -->
+<aside class="mdc-drawer mdc-drawer--modal">
+    <div class="mdc-drawer__header">
+        <h3 class="mdc-drawer__title">菜单</h3>
+    </div>
+    <div class="mdc-drawer__content">
+        <nav class="mdc-list">
+            <a class="mdc-list-item" href="#基础饲料">
+                <span class="mdc-list-item__text">基础饲料</span>
+            </a>
+            <a class="mdc-list-item" href="#自制饲料">
+                <span class="mdc-list-item__text">自制饲料</span>
+            </a>
+            <a class="mdc-list-item" href="#审批">
+                <span class="mdc-list-item__text">审批</span>
+            </a>
+            <a class="mdc-list-item" href="#计算">
+                <span class="mdc-list-item__text">计算</span>
+            </a>
+        </nav>
+    </div>
+</aside>
+</body>
+</html>

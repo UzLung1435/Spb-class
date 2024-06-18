@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>饲料基础数据</title>
+    <!-- 引入Material Design 3的CSS和JS文件 -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <!-- 引入自定义样式 -->
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+    <script th:src="@{/js/scripts.js}"></script>
+</head>
+<body>
+
+<!-- Include common header and nav -->
+<div th:include="common :: header"></div>
+<div th:include="common :: nav"></div>
+
+<div class="container">
+    <div class="collapse">
+        <!-- Left links -->
+        <ul class="mdc-list mdc-list--dense">
+            <li class="mdc-list-item">
+                <a class="mdc-list-item__text" href="#饲料基础数据">饲料基础数据</a>
+            </li>
+        </ul>
+        <div class="d-flex align-items-center">
+            <button data-mdb-ripple-init type="button" id="toggleTableButton" class="mdc-button mdc-button--raised" th:onclick="|toggleTable()|">
+                <span class="mdc-button__label">显示数据</span>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="container table-container">
+    <table class="mdc-data-table__table" style="max-width: 700px">
+        <thead>
+        <tr class="mdc-data-table__header-row">
+            <th class="mdc-data-table__header-cell" scope="col">序号</th>
+            <th class="mdc-data-table__header-cell" scope="col">中国饲料号CFN</th>
+            <th class="mdc-data-table__header-cell" scope="col">饲料名称</th>
+            <th class="mdc-data-table__header-cell" scope="col">饲料描述</th>
+            <th class="mdc-data-table__header-cell" scope="col">干物质(%)</th>
+            <th class="mdc-data-table__header-cell" scope="col">粗蛋白质(%)</th>
+            <th class="mdc-data-table__header-cell" scope="col">粗脂肪(%)</th>
+            <th class="mdc-data-table__header-cell" scope="col">粗纤维(%)</th>
+            <th class="mdc-data-table__header-cell" scope="col">无氮浸出物(%)</th>
+            <th class="mdc-data-table__header-cell" scope="col">粗灰分(%)</th>
+            <th class="mdc-data-table__header-cell" scope="col">中洗纤维(%)</th>
+            <th class="mdc-data-table__header-cell" scope="col">酸洗纤维(%)</th>
+            <th class="mdc-data-table__header-cell" scope="col">淀粉(%)</th>
+            <th class="mdc-data-table__header-cell" scope="col">钙(%)</th>
+            <th class="mdc-data-table__header-cell" scope="col">总磷(%)</th>
+            <th class="mdc-data-table__header-cell" scope="col">有效磷(%)</th>
+        </tr>
+        </thead>
+        <tbody class="mdc-data-table__content" id="fodderTableBody">
+        <!-- 数据将被填充在这里 -->
+        <tr th:each="fodder: ${fodders}" class="mdc-data-table__row">
+            <td class="mdc-data-table__cell" th:text="${fodder.xid}">序号</td>
+            <td class="mdc-data-table__cell" th:text="${fodder.CFN}">中国饲料号CFN</td>
+            <td class="mdc-data-table__cell" th:text="${fodder.fodderName}">饲料名称</td>
+            <td class="mdc-data-table__cell" th:text="${fodder.fodderDescription}">饲料描述</td>
+            <td class="mdc-data-table__cell" th:text="${fodder.dryMatter}">干物质(%)</td>
+            <td class="mdc-data-table__cell" th:text="${fodder.crudeProtein}">粗蛋白质(%)</td>
+            <td class="mdc-data-table__cell" th:text="${fodder.crudeFat}">粗脂肪(%)</td>
+            <td class="mdc-data-table__cell" th:text="${fodder.crudeFiber}">粗纤维(%)</td>
+            <td class="mdc-data-table__cell" th:text="${fodder.nitrogenFreeExtract}">无氮浸出物(%)</td>
+            <td class="mdc-data-table__cell" th:text="${fodder.crudeAsh}">粗灰分(%)</td>
+            <td class="mdc-data-table__cell" th:text="${fodder.neutralDetergentFiber}">中洗纤维(%)</td>
+            <td class="mdc-data-table__cell" th:text="${fodder.acidDetergentFiber}">酸洗纤维(%)</td>
+            <td class="mdc-data-table__cell" th:text="${fodder.starch}">淀粉(%)</td>
+            <td class="mdc-data-table__cell" th:text="${fodder.calcium}">钙(%)</td>
+            <td class="mdc-data-table__cell" th:text="${fodder.totalPhosphorus}">总磷(%)</td>
+            <td class="mdc-data-table__cell" th:text="${fodder.availablePhosphorus}">有效磷(%)</td>
+            <td>
+                <a th:href="@{/fodder/regular/edit(fdId=${cfn})}"
+                   style="text-decoration: none">
+                    <input type="button" class="mdc-button" value="编辑">
+                </a>
+                <a th:href="@{/fodder/regular/delete(fdId=${cfn})}"
+                   style="text-decoration: none">
+                    <input type="button" class="mdc-button"
+                           onclick="return del()" value="删除">
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div style="text-align:center;margin-top:20px;margin-bottom:20px">
+    <a th:href="@{/fodder/regular/add}">
+        <input type="button" class="mdc-button" value="添加">
+    </a>
+</div>
+</body>
+
+<script></script>
+
+</html>

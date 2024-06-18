@@ -1,6 +1,7 @@
 package kt.uz.javasiliaosystem.entity
 
 data class RegularFodderEntity(
+    // 饲料描述及常规成分
     val xid: Int,
     val CFN: String,
     val fodderName: String,

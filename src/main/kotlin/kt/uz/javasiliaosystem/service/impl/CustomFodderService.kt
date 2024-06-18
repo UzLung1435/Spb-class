@@ -11,17 +11,8 @@ class CustomFodderService: ICustomFodderService {
 
     @Resource
     lateinit var customFodderMapper: CustomFodderMapper
-
-    override fun addCustomFodder(cfd: CustomFodderEntity) {
-        return customFodderMapper.addCustomFodder(cfd)
-    }
-
-    override fun getCustomFodder(cfId: String) {
-        return customFodderMapper.getCustomFodder(cfId)
-    }
-
-    override fun getCustomFodderByName(cfName: String) {
-        return customFodderMapper.getCustomFodderByName(cfName)
+    override fun insertCustomFodder(customFodderEntity: CustomFodderEntity) {
+        return customFodderMapper.insertCustomFodder(customFodderEntity)
     }
 
     override fun updateCustomFodder(cfd: CustomFodderEntity) {
@@ -32,11 +23,11 @@ class CustomFodderService: ICustomFodderService {
         return customFodderMapper.deleteCustomFodder(cfId)
     }
 
-    override fun updateCustomFodderState(cfId: String, state: String) {
-        return customFodderMapper.updateCustomFodderState(cfId,state)
+    override fun getAllCustomFodder(): List<CustomFodderEntity> {
+        return customFodderMapper.selectAllCustomFodder()
     }
 
-    override fun getAllCustomFodder(): List<CustomFodderEntity> {
-        return customFodderMapper.getAll()
+    override fun selectCustomFodderById(cfId: String): CustomFodderEntity {
+        return customFodderMapper.selectCustomFodderById(cfId)
     }
 }

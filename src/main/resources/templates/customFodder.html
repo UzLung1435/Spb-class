@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Custom Fodder Management</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+        <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+        <style>
+            body {
+                font-family: 'Roboto', sans-serif;
+                margin: 20px;
+            }
+
+            .mdc-data-table {
+                width: 100%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- Include common header and nav -->
+        <div th:include="common :: header"></div>
+        <div th:include="common :: nav"></div>
+
+        <h1>Custom Fodder Management</h1>
+
+        <!-- Fodder Table -->
+        <div class="mdc-data-table">
+            <table aria-label="Fodder Table" class="mdc-data-table__table">
+                <thead>
+                <tr class="mdc-data-table__header-row">
+                    <th class="mdc-data-table__header-cell" scope="col">序号</th>
+                    <th class="mdc-data-table__header-cell" scope="col">中国饲料号CFN</th>
+                    <th class="mdc-data-table__header-cell" scope="col">饲料名称</th>
+                    <th class="mdc-data-table__header-cell" scope="col">饲料描述</th>
+                    <th class="mdc-data-table__header-cell" scope="col">干物质(%)</th>
+                    <th class="mdc-data-table__header-cell" scope="col">粗蛋白质(%)</th>
+                    <th class="mdc-data-table__header-cell" scope="col">粗脂肪(%)</th>
+                    <th class="mdc-data-table__header-cell" scope="col">粗纤维(%)</th>
+                    <th class="mdc-data-table__header-cell" scope="col">无氮浸出物(%)</th>
+                    <th class="mdc-data-table__header-cell" scope="col">粗灰分(%)</th>
+                    <th class="mdc-data-table__header-cell" scope="col">中洗纤维(%)</th>
+                    <th class="mdc-data-table__header-cell" scope="col">酸洗纤维(%)</th>
+                    <th class="mdc-data-table__header-cell" scope="col">淀粉(%)</th>
+                    <th class="mdc-data-table__header-cell" scope="col">钙(%)</th>
+                    <th class="mdc-data-table__header-cell" scope="col">总磷(%)</th>
+                    <th class="mdc-data-table__header-cell" scope="col">有效磷(%)</th>
+                </tr>
+                </thead>
+                <tbody class="mdc-data-table__content">
+                <tr class="mdc-data-table__row" th:each="cfd, iterStat : ${cfdList}">
+                    <td class="mdc-data-table__cell" th:text="${iterStat.index + 1}"></td>
+                    <td class="mdc-data-table__cell" th:text="${cfd.fdId}"></td>
+                    <td class="mdc-data-table__cell" th:text="${cfd.fdName}"></td>
+                    <td class="mdc-data-table__cell" th:text="${cfd.fdType}"></td>
+                    <td class="mdc-data-table__cell" th:text="${cfd.fdInfo['dryMatter']}"></td>
+                    <td class="mdc-data-table__cell" th:text="${cfd.fdInfo['crudeProtein']}"></td>
+                    <td class="mdc-data-table__cell" th:text="${cfd.fdInfo['crudeFat']}"></td>
+                    <td class="mdc-data-table__cell" th:text="${cfd.fdInfo['crudeFiber']}"></td>
+                    <td class="mdc-data-table__cell" th:text="${cfd.fdInfo['nitrogenFreeExtract']}"></td>
+                    <td class="mdc-data-table__cell" th:text="${cfd.fdInfo['crudeAsh']}"></td>
+                    <td class="mdc-data-table__cell" th:text="${cfd.fdInfo['neutralDetergentFiber']}"></td>
+                    <td class="mdc-data-table__cell" th:text="${cfd.fdInfo['acidDetergentFiber']}"></td>
+                    <td class="mdc-data-table__cell" th:text="${cfd.fdInfo['starch']}"></td>
+                    <td class="mdc-data-table__cell" th:text="${cfd.fdInfo['calcium']}"></td>
+                    <td class="mdc-data-table__cell" th:text="${cfd.fdInfo['totalPhosphorus']}"></td>
+                    <td class="mdc-data-table__cell" th:text="${cfd.fdInfo['availablePhosphorus']}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <script>
+            mdc.autoInit();
+        </script>
+    </body>
+</html>

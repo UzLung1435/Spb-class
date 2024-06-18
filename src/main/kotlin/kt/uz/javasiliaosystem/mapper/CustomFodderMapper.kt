@@ -8,12 +8,9 @@ import org.springframework.stereotype.Repository
 @Mapper
 @Repository
 interface CustomFodderMapper {
-    @Insert("INSERT INTO customfodder(customFodderId, CFN, customFodderName, percent) values (#{cfd.fdName}, #{cfd.fdInfo.CFN}, #{cfd.fd})")
-    fun addCustomFodder(cfd: CustomFodderEntity)
-    fun getCustomFodder(cfId: String)
-    fun getCustomFodderByName(cfName: String)
-    fun updateCustomFodder(cfd: CustomFodderEntity)
-    fun deleteCustomFodder(cfId: String)
-    fun updateCustomFodderState(cfId: String, state: String)
-    fun getAll(): List<CustomFodderEntity>
+    fun selectAllCustomFodder():List<CustomFodderEntity>
+    fun insertCustomFodder(customFodderEntity:CustomFodderEntity)
+    fun updateCustomFodder(customFodderEntity: CustomFodderEntity)
+    fun deleteCustomFodder(cfId:String)
+    fun selectCustomFodderById(cfId: String):CustomFodderEntity
 }

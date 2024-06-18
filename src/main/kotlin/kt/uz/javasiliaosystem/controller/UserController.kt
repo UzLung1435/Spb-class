@@ -2,11 +2,12 @@ package kt.uz.javasiliaosystem.controller
 
 import kt.uz.javasiliaosystem.entity.UserEntity
 import kt.uz.javasiliaosystem.service.impl.UserService
+import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
 import javax.annotation.Resource
 import javax.servlet.http.HttpServletRequest
 
-@RestController
+@Controller
 @RequestMapping("/api/user")
 class UserController {
 

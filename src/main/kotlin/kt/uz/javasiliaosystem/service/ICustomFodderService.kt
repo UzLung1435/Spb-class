@@ -5,11 +5,10 @@ import kt.uz.javasiliaosystem.service.impl.CustomFodderService
 
 
 interface ICustomFodderService {
-    fun addCustomFodder(cfd: CustomFodderEntity)
-    fun getCustomFodder(cfId: String)
-    fun getCustomFodderByName(cfName: String)
+    fun insertCustomFodder(customFodderEntity:CustomFodderEntity)
     fun updateCustomFodder(cfd: CustomFodderEntity)
     fun deleteCustomFodder(cfId: String)
-    fun updateCustomFodderState(cfId: String, state: String)
+
     fun getAllCustomFodder():List<CustomFodderEntity>
+    fun selectCustomFodderById(cfId: String):CustomFodderEntity
 }
