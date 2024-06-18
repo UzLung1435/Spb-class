@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Custom Fodder</title>
+    <!-- Material Design 3 CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <!-- Custom CSS -->
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+</head>
+<body>
+<!-- Include common header and nav -->
+<div th:replace="common :: header"></div>
+<div th:replace="common :: nav"></div>
+
+<!-- Main Content -->
+<div class="mdc-top-app-bar--fixed-adjust">
+    <h1>Add Custom Fodder</h1>
+    <form th:action="@{/fodder/custom/addFodder}" th:object="${fodder}" method="post">
+        <div class="mdc-text-field mdc-text-field--outlined">
+            <input type="text" id="fodderName" th:field="*{}" class="mdc-text-field__input">
+            <label for="fodderName" class="mdc-floating-label">Fodder Name</label>
+            <div class="mdc-notched-outline">
+                <div class="mdc-notched-outline__leading"></div>
+                <div class="mdc-notched-outline__notch">
+                    <label for="fodderName" class="mdc-floating-label">Fodder Name</label>
+                </div>
+                <div class="mdc-notched-outline__trailing"></div>
+            </div>
+        </div>
+        <div class="mdc-text-field mdc-text-field--outlined">
+            <input type="text" id="raNum" th:field="*{raNum}" class="mdc-text-field__input">
+            <label for="raNum" class="mdc-floating-label">RA Num</label>
+            <div class="mdc-notched-outline">
+                <div class="mdc-notched-outline__leading"></div>
+                <div class="mdc-notched-outline__notch">
+                    <label for="raNum" class="mdc-floating-label">RA Num</label>
+                </div>
+                <div class="mdc-notched-outline__trailing"></div>
+            </div>
+        </div>
+        <div class="mdc-text-field mdc-text-field--outlined">
+            <input type="text" id="description" th:field="*{}" class="mdc-text-field__input">
+            <label for="description" class="mdc-floating-label">Description</label>
+            <div class="mdc-notched-outline">
+                <div class="mdc-notched-outline__leading"></div>
+                <div class="mdc-notched-outline__notch">
+                    <label for="description" class="mdc-floating-label">Description</label>
+                </div>
+                <div class="mdc-notched-outline__trailing"></div>
+            </div>
+        </div>
+        <button type="submit" class="mdc-button mdc-button--raised">
+            <span class="mdc-button__label">Add Custom Fodder</span>
+        </button>
+    </form>
+</div>
+
+<!-- JavaScript for Drawer and Logout Options -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const drawer = new mdc.drawer.MDCDrawer.attachTo(document.getElementById('drawer'));
+        const topAppBar = new mdc.topAppBar.MDCTopAppBar.attachTo(document.getElementById('app-bar'));
+
+        topAppBar.setScrollTarget(document.querySelector('.mdc-top-app-bar--fixed-adjust'));
+        topAppBar.listen('MDCTopAppBar:nav', () => {
+            drawer.open = !drawer.open;
+        });
+
+        function toggleDrawer() {
+            drawer.open = !drawer.open;
+        }
+    });
+</script>
+</body>
+</html>

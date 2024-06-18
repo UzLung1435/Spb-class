@@ -29,8 +29,16 @@ open class RegularFodderService:IRegularFodderService {
         return regularFodderMapper.getRegularByAttribute(fodderName, raNum)
     }
 
-    override fun addCustomFodder(customFodder: CustomFodderEntity) {
-        return regularFodderMapper.addCustomFodder(customFodder)
+    override fun addFodder(regularFodderEntity: RegularFodderEntity) {
+        return regularFodderMapper.addFodder(regularFodderEntity)
+    }
+
+    override fun updateFodder(regularFodderEntity: RegularFodderEntity) {
+        return regularFodderMapper.updateFodder(regularFodderEntity)
+    }
+
+    override fun deleteFodder(rId: String) {
+        return regularFodderMapper.deleteFodder(rId)
     }
 
 }

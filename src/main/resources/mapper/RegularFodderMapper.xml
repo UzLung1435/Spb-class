@@ -20,6 +20,49 @@
         WHERE #{fodderName} = ? AND #{raNum} IS NOT NULL;
     </select>
 
+    <delete id="deleteFodder">
+        DELETE FROM 饲料描述及常规成分 WHERE 中国饲料号CFN = #{rId}
+    </delete>
+
+    <!-- 更新饲料 -->
+    <update id="updateFodder">
+        UPDATE 饲料描述及常规成分
+        SET
+            饲料名称 = #{fodderName},
+            饲料描述 = #{description},
+            干物质 = #{dryMatter},
+            粗蛋白质 = #{crudeProtein},
+            粗脂肪 = #{crudeFat},
+            粗纤维 = #{crudeFiber},
+            无氮浸出物 = #{nitrogenFreeExtract},
+            粗灰分 = #{crudeAsh},
+            中洗纤维 = #{neutralDetergentFiber},
+            酸洗纤维 = #{acidDetergentFiber},
+            淀粉 = #{starch},
+            钙 = #{calcium},
+            总磷 = #{totalPhosphorus},
+            有效磷 = #{availablePhosphorus}
+        WHERE 中国饲料号CFN = #{rId}
+    </update>
+
+    <insert id="addFodder">
+        insert into 饲料描述及常规成分 set
+            饲料名称 = #{fodderName},
+            饲料描述 = #{description},
+            干物质 = #{dryMatter},
+            粗蛋白质 = #{crudeProtein},
+            粗脂肪 = #{crudeFat},
+            粗纤维 = #{crudeFiber},
+            无氮浸出物 = #{nitrogenFreeExtract},
+            粗灰分 = #{crudeAsh},
+            中洗纤维 = #{neutralDetergentFiber},
+            酸洗纤维 = #{acidDetergentFiber},
+            淀粉 = #{starch},
+            钙 = #{calcium},
+            总磷 = #{totalPhosphorus},
+            有效磷 = #{availablePhosphorus}
+    </insert>
+
     <resultMap id="RegularFodderEntityResultMap" type="kt.uz.javasiliaosystem.entity.RegularFodderEntity">
         <id column="序号" property="xid" jdbcType="VARCHAR"/>
         <id column="中国饲料号CFN" property="CFN" jdbcType="VARCHAR"/>

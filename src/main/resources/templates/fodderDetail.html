@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Fodder Detail</title>
+</head>
+<body>
+<!-- Include common header and nav -->
+<div th:replace="common :: header"></div>
+<div th:replace="common :: nav"></div>
+
+<!-- Main Content -->
+<div class="mdc-top-app-bar--fixed-adjust">
+    <h1>Fodder Detail</h1>
+    <div class="mdc-card">
+        <div class="mdc-card__primary-action">
+            <div class="mdc-card__media mdc-card__media--16-9" style="background-image: url('https://via.placeholder.com/1600x900');"></div>
+            <div class="mdc-card__primary">
+                <h2 class="mdc-card__title" th:text="${fodders.fodderName}">Fodder Name</h2>
+                <h3 class="mdc-card__subtitle" th:text="${fodder.CFN}">CFN</h3>
+            </div>
+            <div class="mdc-card__secondary">
+                <p th:text="${fodder.fodderDescription}">Fodder Description</p>
+                <ul>
+                    <li>干物质: <span th:text="${fodder.dryMatter}">%</span></li>
+                    <li>粗蛋白质: <span th:text="${fodder.crudeProtein}">%</span></li>
+                    <li>粗脂肪: <span th:text="${fodder.crudeFat}">%</span></li>
+                    <li>粗纤维: <span th:text="${fodder.crudeFiber}">%</span></li>
+                    <li>无氮浸出物: <span th:text="${fodder.nitrogenFreeExtract}">%</span></li>
+                    <li>粗灰分: <span th:text="${fodder.crudeAsh}">%</span></li>
+                    <li>中洗纤维: <span th:text="${fodder.neutralDetergentFiber}">%</span></li>
+                    <li>酸洗纤维: <span th:text="${fodder.acidDetergentFiber}">%</span></li>
+                    <li>淀粉: <span th:text="${fodder.starch}">%</span></li>
+                    <li>钙: <span th:text="${fodder.calcium}">%</span></li>
+                    <li>总磷: <span th:text="${fodder.totalPhosphorus}">%</span></li>
+                    <li>有效磷: <span th:text="${fodder.availablePhosphorus}">%</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript for Drawer and Logout Options -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const drawer = new mdc.drawer.MDCDrawer.attachTo(document.getElementById('drawer'));
+        const topAppBar = new mdc.topAppBar.MDCTopAppBar.attachTo(document.getElementById('app-bar'));
+
+        topAppBar.setScrollTarget(document.querySelector('.mdc-top-app-bar--fixed-adjust'));
+        topAppBar.listen('MDCTopAppBar:nav', () => {
+            drawer.open = !drawer.open;
+        });
+
+        function toggleDrawer() {
+            drawer.open = !drawer.open;
+        }
+    });
+</script>
+</body>
+</html>

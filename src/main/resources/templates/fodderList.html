@@ -74,11 +74,11 @@
             <td class="mdc-data-table__cell" th:text="${fodder.totalPhosphorus}">总磷(%)</td>
             <td class="mdc-data-table__cell" th:text="${fodder.availablePhosphorus}">有效磷(%)</td>
             <td>
-                <a th:href="@{/fodder/regular/edit(fdId=${cfn})}"
+                <a th:href="@{/fodder/regular/updateFodder(fId=${fodder.CFN})}"
                    style="text-decoration: none">
                     <input type="button" class="mdc-button" value="编辑">
                 </a>
-                <a th:href="@{/fodder/regular/delete(fdId=${cfn})}"
+                <a th:href="@{/fodder/regular/deleteFodder(fId=${fodder.CFN})}"
                    style="text-decoration: none">
                     <input type="button" class="mdc-button"
                            onclick="return del()" value="删除">
@@ -89,12 +89,10 @@
     </table>
 </div>
 <div style="text-align:center;margin-top:20px;margin-bottom:20px">
-    <a th:href="@{/fodder/regular/add}">
+    <a th:href="@{/fodder/regular/addFodder}">
         <input type="button" class="mdc-button" value="添加">
     </a>
 </div>
 </body>
-
-<script></script>
 
 </html>
