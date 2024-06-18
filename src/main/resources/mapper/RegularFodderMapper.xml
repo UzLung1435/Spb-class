@@ -47,6 +47,7 @@
 
     <insert id="addFodder">
         insert into 饲料描述及常规成分 set
+            中国饲料号CFN = #{CFN},
             饲料名称 = #{fodderName},
             饲料描述 = #{fodderDescription},
             干物质 = #{dryMatter},

@@ -1,78 +1,78 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add Custom Fodder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Fodder</title>
     <!-- Material Design 3 CSS -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
-    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-    <!-- Custom CSS -->
-    <link th:href="@{/css/styles.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@material-components/material-web@next/dist/material-web.css">
 </head>
 <body>
-<!-- Include common header and nav -->
-<div th:replace="common :: header"></div>
-<div th:replace="common :: nav"></div>
-
-<!-- Main Content -->
-<div class="mdc-top-app-bar--fixed-adjust">
-    <h1>Add Custom Fodder</h1>
-    <form th:action="@{/fodder/custom/addFodder}" th:object="${fodder}" method="post">
-        <div class="mdc-text-field mdc-text-field--outlined">
-            <input type="text" id="fodderName" th:field="*{}" class="mdc-text-field__input">
-            <label for="fodderName" class="mdc-floating-label">Fodder Name</label>
-            <div class="mdc-notched-outline">
-                <div class="mdc-notched-outline__leading"></div>
-                <div class="mdc-notched-outline__notch">
-                    <label for="fodderName" class="mdc-floating-label">Fodder Name</label>
-                </div>
-                <div class="mdc-notched-outline__trailing"></div>
-            </div>
+<div class="container">
+    <h2>Add New Fodder</h2>
+    <form th:action="@{/fodder/regular/addFodder}" th:object="${fodder}" method="post">
+        <div class="form-group">
+            <label for="fodderName">饲料名称</label>
+            <input type="text" id="fodderName" th:field="*{fodderName}" class="form-control" required>
         </div>
-        <div class="mdc-text-field mdc-text-field--outlined">
-            <input type="text" id="raNum" th:field="*{raNum}" class="mdc-text-field__input">
-            <label for="raNum" class="mdc-floating-label">RA Num</label>
-            <div class="mdc-notched-outline">
-                <div class="mdc-notched-outline__leading"></div>
-                <div class="mdc-notched-outline__notch">
-                    <label for="raNum" class="mdc-floating-label">RA Num</label>
-                </div>
-                <div class="mdc-notched-outline__trailing"></div>
-            </div>
+        <div class="form-group">
+            <label for="fodderDescription">饲料描述</label>
+            <textarea id="fodderDescription" th:field="*{fodderDescription}" class="form-control" required></textarea>
         </div>
-        <div class="mdc-text-field mdc-text-field--outlined">
-            <input type="text" id="description" th:field="*{}" class="mdc-text-field__input">
-            <label for="description" class="mdc-floating-label">Description</label>
-            <div class="mdc-notched-outline">
-                <div class="mdc-notched-outline__leading"></div>
-                <div class="mdc-notched-outline__notch">
-                    <label for="description" class="mdc-floating-label">Description</label>
-                </div>
-                <div class="mdc-notched-outline__trailing"></div>
-            </div>
+        <div class="form-group">
+            <label for="dryMatter">干物质</label>
+            <input type="text" id="dryMatter" th:field="*{dryMatter}" class="form-control" required>
         </div>
-        <button type="submit" class="mdc-button mdc-button--raised">
-            <span class="mdc-button__label">Add Custom Fodder</span>
-        </button>
+        <!-- Repeat similar divs for other fields like crudeProtein, crudeFat, etc. -->
+        <div class="form-group">
+            <label for="crudeProtein">粗蛋白质</label>
+            <input type="text" id="crudeProtein" th:field="*{crudeProtein}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="crudeFat">粗脂肪</label>
+            <input type="text" id="crudeFat" th:field="*{crudeFat}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="crudeFiber">粗纤维</label>
+            <input type="text" id="crudeFiber" th:field="*{crudeFiber}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="nitrogenFreeExtract">无氮浸出物</label>
+            <input type="text" id="nitrogenFreeExtract" th:field="*{nitrogenFreeExtract}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="crudeAsh">粗灰分</label>
+            <input type="text" id="crudeAsh" th:field="*{crudeAsh}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="neutralDetergentFiber">中洗纤维</label>
+            <input type="text" id="neutralDetergentFiber" th:field="*{neutralDetergentFiber}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="acidDetergentFiber">酸洗纤维</label>
+            <input type="text" id="acidDetergentFiber" th:field="*{acidDetergentFiber}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="starch">淀粉</label>
+            <input type="text" id="starch" th:field="*{starch}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="calcium">钙</label>
+            <input type="text" id="calcium" th:field="*{calcium}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="totalPhosphorus">总磷</label>
+            <input type="text" id="totalPhosphorus" th:field="*{totalPhosphorus}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="availablePhosphorus">有效磷</label>
+            <input type="text" id="availablePhosphorus" th:field="*{availablePhosphorus}" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Fodder</button>
     </form>
 </div>
-
-<!-- JavaScript for Drawer and Logout Options -->
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const drawer = new mdc.drawer.MDCDrawer.attachTo(document.getElementById('drawer'));
-        const topAppBar = new mdc.topAppBar.MDCTopAppBar.attachTo(document.getElementById('app-bar'));
-
-        topAppBar.setScrollTarget(document.querySelector('.mdc-top-app-bar--fixed-adjust'));
-        topAppBar.listen('MDCTopAppBar:nav', () => {
-            drawer.open = !drawer.open;
-        });
-
-        function toggleDrawer() {
-            drawer.open = !drawer.open;
-        }
-    });
-</script>
+<!-- Material Design 3 JS -->
+<script src="https://cdn.jsdelivr.net/npm/@material-components/material-web@next/dist/material-web.js"></script>
 </body>
 </html>

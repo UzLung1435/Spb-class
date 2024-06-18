@@ -1,19 +1,20 @@
 package kt.uz.javasiliaosystem.controller
 
-import kt.uz.javasiliaosystem.entity.CustomFodderEntity
 import kt.uz.javasiliaosystem.entity.RegularFodderEntity
 import kt.uz.javasiliaosystem.service.impl.RegularFodderService
-import org.slf4j.LoggerFactory
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.*
+import java.lang.Thread.sleep
 import javax.annotation.Resource
 
 @Controller
 @RequestMapping("/fodder/regular")
 class RegularFodderController {
-    @Resource
-    lateinit var regularFodderService: RegularFodderService
+
+    @Autowired
+    val regularFodderService = RegularFodderService()
 
     @RequestMapping("/allFodders")
     fun allFodders(model: Model): String {
@@ -46,8 +47,7 @@ class RegularFodderController {
     @RequestMapping("/addFodder")
     fun addFodder(@ModelAttribute regularFodderEntity: RegularFodderEntity, model: Model): String {
         regularFodderService.addFodder(regularFodderEntity)
-        model.addAttribute("fodder", )
-        model.addAttribute("message", "Fodder added successfully")
+        model.addAttribute("fodder", regularFodderEntity)
         return "redirect:/fodder/regular/allFodders"
     }
 
