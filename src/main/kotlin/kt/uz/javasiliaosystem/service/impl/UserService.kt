@@ -1,5 +1,6 @@
 package kt.uz.javasiliaosystem.service.impl
 
+import kt.uz.javasiliaosystem.entity.UserAuthEntity
 import kt.uz.javasiliaosystem.entity.UserEntity
 import kt.uz.javasiliaosystem.mapper.UserMapper
 import kt.uz.javasiliaosystem.service.IUserService
@@ -23,5 +24,9 @@ open class UserService : IUserService{
         userTable.put("userName", userE.userName.toString())
         userTable.put("userType", userE.userType)
         return utils.onBuildUserJson(userTable)
+    }
+
+    override fun getUserInfo(user: UserAuthEntity): UserEntity {
+        return userMapper.getUserInfo(user)
     }
 }
