@@ -29,7 +29,7 @@
         UPDATE 饲料描述及常规成分
         SET
             饲料名称 = #{fodderName},
-            饲料描述 = #{description},
+            饲料描述 = #{fodderDescription},
             干物质 = #{dryMatter},
             粗蛋白质 = #{crudeProtein},
             粗脂肪 = #{crudeFat},
@@ -42,13 +42,13 @@
             钙 = #{calcium},
             总磷 = #{totalPhosphorus},
             有效磷 = #{availablePhosphorus}
-        WHERE 中国饲料号CFN = #{rId}
+        WHERE 中国饲料号CFN = #{CFN}
     </update>
 
     <insert id="addFodder">
         insert into 饲料描述及常规成分 set
             饲料名称 = #{fodderName},
-            饲料描述 = #{description},
+            饲料描述 = #{fodderDescription},
             干物质 = #{dryMatter},
             粗蛋白质 = #{crudeProtein},
             粗脂肪 = #{crudeFat},

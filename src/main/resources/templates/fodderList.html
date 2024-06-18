@@ -74,7 +74,7 @@
             <td class="mdc-data-table__cell" th:text="${fodder.totalPhosphorus}">总磷(%)</td>
             <td class="mdc-data-table__cell" th:text="${fodder.availablePhosphorus}">有效磷(%)</td>
             <td>
-                <a th:href="@{/fodder/regular/updateFodder(fId=${fodder.CFN})}"
+                <a th:href="@{/fodder/regular/toUpdateFodder(fId=${fodder.CFN})}"
                    style="text-decoration: none">
                     <input type="button" class="mdc-button" value="编辑">
                 </a>

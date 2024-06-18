@@ -59,8 +59,8 @@ class RegularFodderController {
     }
 
     @RequestMapping("/toUpdateFodder")
-    fun toUpdateFodder(fodderStr: String, model: Model): String {
-        val fdList = regularFodderService.getRegularById(fodderStr)
+    fun toUpdateFodder(fId: String, model: Model): String {
+        val fdList = regularFodderService.getRegularById(fId)
         model.addAttribute("fodder", fdList)
         return "updateFodder"
     }
