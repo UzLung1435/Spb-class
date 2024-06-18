@@ -4,21 +4,11 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kt.uz.javasiliaosystem.mapper.CustomFodderMapper">
     <select id="getAll" resultType="kt.uz.javasiliaosystem.entity.CustomFodderEntity">
-        select * from 饲料描述及常规成分
+        select * from customfodder
     </select>
 
-    <select id="getCustomByName" resultType="kt.uz.javasiliaosystem.entity.CustomFodderEntity">
-        select * from 饲料描述及常规成分 where 饲料名称 like #{fodderName}
-    </select>
 
-    <select id="getCustomById" resultType="kt.uz.javasiliaosystem.entity.CustomFodderEntity">
-        select * from 饲料描述及常规成分 where 中国饲料号CFN = #{CFN}
-    </select>
 
-    <select id="getCustomByAttribute" resultType="kt.uz.javasiliaosystem.entity.CustomFodderEntity">
-        SELECT * from 饲料描述及常规成分
-        WHERE #{fodderName} = ? AND #{raNum} IS NOT NULL;
-    </select>
 
     <resultMap id="CustomFodderEntityResultMap" type="kt.uz.javasiliaosystem.entity.CustomFodderEntity">
         <id column="序号" property="xid" jdbcType="VARCHAR"/>

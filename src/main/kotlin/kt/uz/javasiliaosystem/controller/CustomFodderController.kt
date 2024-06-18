@@ -1,8 +1,10 @@
 package kt.uz.javasiliaosystem.controller
 
+import kt.uz.javasiliaosystem.entity.CustomFodderEntity
 import kt.uz.javasiliaosystem.service.ICustomFodderService
 import kt.uz.javasiliaosystem.service.impl.CustomFodderService
 import org.springframework.stereotype.Controller
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import javax.annotation.Resource
 
@@ -12,7 +14,10 @@ class CustomFodderController {
     @Resource
     lateinit var customFodderService: CustomFodderService
 
-
+    @GetMapping
+    fun getAll():List<CustomFodderEntity>{
+        return customFodderService.getAllCustomFodder()
+    }
 
 
 }

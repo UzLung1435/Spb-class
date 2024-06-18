@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*
 import javax.annotation.Resource
 
 @Controller
-@RequestMapping("/api/fodder/regular")
+@RequestMapping("/fodder/regular")
 class RegularFodderController {
     @Resource
     lateinit var regularFodderService: RegularFodderService
@@ -29,4 +29,5 @@ class RegularFodderController {
     fun getAllFodders():List<RegularFodderEntity>{
         return regularFodderService.getAll()
     }
+
 }

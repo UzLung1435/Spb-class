@@ -35,4 +35,8 @@ class CustomFodderService: ICustomFodderService {
     override fun updateCustomFodderState(cfId: String, state: String) {
         return customFodderMapper.updateCustomFodderState(cfId,state)
     }
+
+    override fun getAllCustomFodder(): List<CustomFodderEntity> {
+        return customFodderMapper.getAll()
+    }
 }

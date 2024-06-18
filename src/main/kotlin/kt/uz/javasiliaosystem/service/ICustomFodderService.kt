@@ -1,6 +1,7 @@
 package kt.uz.javasiliaosystem.service
 
 import kt.uz.javasiliaosystem.entity.CustomFodderEntity
+import kt.uz.javasiliaosystem.service.impl.CustomFodderService
 
 
 interface ICustomFodderService {
@@ -10,4 +11,5 @@ interface ICustomFodderService {
     fun updateCustomFodder(cfd: CustomFodderEntity)
     fun deleteCustomFodder(cfId: String)
     fun updateCustomFodderState(cfId: String, state: String)
+    fun getAllCustomFodder():List<CustomFodderEntity>
 }
