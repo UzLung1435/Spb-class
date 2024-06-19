@@ -15,5 +15,14 @@ class LoginController {
         return "login"
     }
 
+    @RequestMapping("/")
+    fun redi():String{
+        return "redirect:index"
+    }
+
+    @RequestMapping("/index")
+    fun redit():String{
+        return "index"
+    }
 
 }

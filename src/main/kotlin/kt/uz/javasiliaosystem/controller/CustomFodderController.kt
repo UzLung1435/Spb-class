@@ -5,10 +5,7 @@ import kt.uz.javasiliaosystem.service.ICustomFodderService
 import kt.uz.javasiliaosystem.service.impl.CustomFodderService
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.*
 import javax.annotation.Resource
 import kotlin.random.Random
 
@@ -48,6 +45,24 @@ class CustomFodderController {
     fun delete(cfdid: String): String {
         customFodderService.deleteCustomFodder(cfdid)
         return "redirect:customFodder"
+    }
+    @GetMapping("/approve/{customFodderId}")
+    fun showApprovalPage(@PathVariable customFodderId: Int, model: Model): String {
+        val customFodder = customFodderService.getCustomFodderById(customFodderId)
+        val status = customFodderService.getStatusByCustomFodderId(customFodderId)
+        model.addAttribute("customFodder", customFodder)
+        model.addAttribute("status", status)
+        return "approvalPage"
+    }
+
+    @PostMapping("/approve/{customFodderId}")
+    fun approveFodder(
+        @PathVariable customFodderId: Int,
+        @RequestParam decision: String
+    ): String {
+        val isPass = decision == "approve"
+        customFodderService.updateStatus(decision, isPass, customFodderId)
+        return "redirect:/approve/$customFodderId"
     }
 
 }

@@ -1,5 +1,7 @@
 package kt.uz.javasiliaosystem.service.impl
 
+import com.google.gson.Gson
+import kt.uz.javasiliaosystem.entity.CfdStatusEntity
 import kt.uz.javasiliaosystem.entity.CustomFodderEntity
 import kt.uz.javasiliaosystem.mapper.CustomFodderMapper
 import kt.uz.javasiliaosystem.service.ICustomFodderService
@@ -12,6 +14,10 @@ class CustomFodderService: ICustomFodderService {
     @Resource
     lateinit var customFodderMapper: CustomFodderMapper
     override fun insertCustomFodder(customFodderEntity: CustomFodderEntity) {
+        customFodderMapper.insertCustomFodder(customFodderEntity)
+        lateinit var status: CfdStatusEntity
+        status.customFodderId = customFodderEntity.fdId?.toInt()!!
+        customFodderMapper.insertCfdStatus(status)
         return customFodderMapper.insertCustomFodder(customFodderEntity)
     }
 
@@ -29,5 +35,17 @@ class CustomFodderService: ICustomFodderService {
 
     override fun selectCustomFodderById(cfId: String): CustomFodderEntity {
         return customFodderMapper.selectCustomFodderById(cfId)
+    }
+
+    override fun getCustomFodderById(customFodderId: Int): CustomFodderEntity {
+        return customFodderMapper.findById(customFodderId)
+    }
+
+    override fun getStatusByCustomFodderId(customFodderId: Int): CfdStatusEntity {
+        return customFodderMapper.findStatusByCustomFodderId(customFodderId)
+    }
+
+    override fun updateStatus(status: String, isPass: Boolean, customFodderId: Int) {
+        customFodderMapper.updateStatus(status, isPass, customFodderId)
     }
 }

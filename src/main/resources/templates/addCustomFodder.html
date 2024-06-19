@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Custom Fodder</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <style>
+        .mdc-data-table {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="mdc-layout-grid">
+    <div class="mdc-layout-grid__inner">
+        <div class="mdc-layout-grid__cell--span-12">
+            <h1>Add Custom Fodder</h1>
+        </div>
+        <div class="mdc-layout-grid__cell--span-12">
+            <form id="fodderForm" th:action="@{/addCustomFodder}" method="post">
+                <div class="mdc-data-table">
+                    <table class="mdc-data-table__table" aria-label="Dessert calories">
+                        <thead>
+                        <tr class="mdc-data-table__header-row">
+                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">饲料号 (CFN)</th>
+                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">添加量</th>
+                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody id="fodderRows" class="mdc-data-table__content">
+                        <tr id="rowTemplate" class="mdc-data-table__row" style="display: none;">
+                            <td class="mdc-data-table__cell">
+                                <input type="text" name="cfn" class="mdc-text-field__input">
+                            </td>
+                            <td class="mdc-data-table__cell">
+                                <input type="text" name="amount" class="mdc-text-field__input">
+                            </td>
+                            <td class="mdc-data-table__cell">
+                                <button type="button" class="mdc-button mdc-button--outlined remove-row">
+                                    <span class="mdc-button__label">Remove</span>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button type="button" id="addRowButton" class="mdc-button mdc-button--outlined">
+                    <span class="mdc-button__label">Add Row</span>
+                </button>
+                <button type="submit" class="mdc-button mdc-button--raised">
+                    <span class="mdc-button__label">Submit</span>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('addRowButton').addEventListener('click', function() {
+        var rowTemplate = document.getElementById('rowTemplate');
+        var newRow = rowTemplate.cloneNode(true);
+        newRow.style.display = '';
+        newRow.id = '';
+        document.getElementById('fodderRows').appendChild(newRow);
+    });
+
+    document.getElementById('fodderRows').addEventListener('click', function(event) {
+        if (event.target.classList.contains('remove-row')) {
+            event.target.closest('.mdc-data-table__row').remove();
+        }
+    });
+</script>
+</body>
+</html>

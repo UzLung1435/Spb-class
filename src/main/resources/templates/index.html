@@ -1,96 +1,34 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta http-equiv="x-ua-compatible" content="ie=edge" />
-  <title>登录首页</title>
-  <!-- MDB icon -->
-  <link rel="icon" href="/static/img/stacks_24dp_FILL0_wght400_GRAD0_opsz24.svg" type="image/x-icon" />
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-  <!-- Google Fonts Roboto -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
-  <!-- MDB -->
-  <link rel="stylesheet" href="/static/css/mdb.min.css" />
+  <meta charset="UTF-8">
+  <title>Home Page</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 </head>
-
-<header>
-  <!-- Start your project here-->
-
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
-    <!-- Container wrapper -->
-    <div class="container">
-      <!-- Navbar brand -->
-      <a class="navbar-brand me-2">
-        <img src="./img/stacks_24dp_FILL0_wght400_GRAD0_opsz24.svg" height="16" alt="Stack Logo" loading="lazy"
-          style="margin-top: -1px;" />
-      </a>
-
-      <!-- Toggle button -->
-      <button data-mdb-collapse-init class="navbar-toggler" type="button" data-mdb-target="#navbarButtonsExample"
-        aria-controls="navbarButtonsExample" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fas fa-bars"></i>
-      </button>
-
-      <!-- Collapsible wrapper -->
-      <div class="collapse navbar-collapse" id="navbarButtonsExample">
-        <!-- Left links -->
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="#">饲料管理系统</a>
-          </li>
-        </ul>
-        <!-- Left links -->
-
-        <!--
-        <div class="d-flex align-items-center">
-          <button data-mdb-ripple-init type="button" class="btn btn-link px-3 me-2">
-            Login
-          </button>
-          <button data-mdb-ripple-init type="button" class="btn btn-primary me-3">
-            Sign up for free
-          </button>
-          <a data-mdb-ripple-init class="btn btn-dark px-3" href="" role="button"><i class="fab fa-github"></i></a>
-        </div>
-        -->
-      </div>
-      <!-- Collapsible wrapper -->
+<body>
+<div class="mdc-layout-grid">
+  <div class="mdc-layout-grid__inner">
+    <div class="mdc-layout-grid__cell--span-12">
+      <h1>Welcome to the Fodder Management System</h1>
     </div>
-    <!-- Container wrapper -->
-  </nav>
-  <!-- Navbar -->
-</header>
-
-<main>
-  <div class="container-sm" style="width: 45%; padding-top: 5%">
-    <div class="card">
-      <div class="card-body">
-        <h3 class="text-center">登录到饲料页面</h3>
-        <form id="login-form">
-          <div class="md-form">
-            <label for="userId">用户名</label>
-            <input type="text" id="userId" class="form-control" required>
-
-          </div>
-          <div class="md-form">
-            <label for="password">密码</label>
-            <input type="password" id="password" class="form-control" required>
-          </div>
-          <button type="submit" class="btn btn-primary btn-block">Login</button>
-        </form>
-        <div id="message" class="mt-3"></div>
-      </div>
+    <div class="mdc-layout-grid__cell--span-4">
+      <a th:href="@{/fodder/regular/allFodders}" class="mdc-button mdc-button--raised">
+        <span class="mdc-button__label">Go to Fodder List</span>
+      </a>
+    </div>
+    <div class="mdc-layout-grid__cell--span-4">
+      <a th:href="@{/fodder/custom/customFd}" class="mdc-button mdc-button--raised">
+        <span class="mdc-button__label">Go to Custom Fodder</span>
+      </a>
+    </div>
+    <div class="mdc-layout-grid__cell--span-4">
+      <a th:href="@{/approvalPage}" class="mdc-button mdc-button--raised">
+        <span class="mdc-button__label">Go to Approval Page</span>
+      </a>
     </div>
   </div>
-
-  <!-- End your project here-->
-</main>
-<!-- MDB -->
-<script type="text/javascript" src="js/mdb.umd.min.js"></script>
-<!-- Custom scripts -->
-<script type="text/javascript"></script>
-
+</div>
+</body>
 </html>

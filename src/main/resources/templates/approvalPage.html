@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Fodder Approval</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+</head>
+<body>
+<div class="mdc-layout-grid">
+    <div class="mdc-layout-grid__inner">
+        <div class="mdc-layout-grid__cell--span-12">
+            <h1>Fodder Approval</h1>
+        </div>
+        <div class="mdc-layout-grid__cell--span-12">
+            <h2>Custom Fodder Details</h2>
+            <p th:text="${customFodder.fdName}"></p>
+            <p th:text="${customFodder.fdType}"></p>
+            <p th:text="${customFodder.fdInfo}"></p>
+        </div>
+        <div class="mdc-layout-grid__cell--span-12">
+            <h2>Status</h2>
+            <p th:text="${status.status}"></p>
+            <p th:text="${status.isPass ? 'Approved' : 'Rejected'}"></p>
+        </div>
+        <div class="mdc-layout-grid__cell--span-12">
+            <form th:action="@{/approve/{customFodderId}(customFodderId=${customFodder.fdId})}" method="post">
+                <button type="submit" name="decision" value="approve" class="mdc-button mdc-button--raised">
+                    <span class="mdc-button__label">Approve</span>
+                </button>
+                <button type="submit" name="decision" value="reject" class="mdc-button mdc-button--raised">
+                    <span class="mdc-button__label">Reject</span>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
